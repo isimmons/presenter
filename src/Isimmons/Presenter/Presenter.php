@@ -17,4 +17,12 @@ abstract class Presenter {
 
         return $this->entity->{$property};
     }
+
+    public function __call($method, $args)
+    {
+        if(method_exists($method))
+        {
+            call_user_func_array($method, [$args]);
+        }
+    }
 }
